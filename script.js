@@ -360,17 +360,28 @@ var question3 = new Question('favorite basketball team?', ['wizards', 'warriors'
 questionArray.push(question1, question2);
 
 
+Question.prototype.displayQuestion = function() {
+	console.log(this.question);
+};
+Question.prototype.displayAnswers = function() {
+	console.log(this.answer);
+};
+
+
+
+
+
 function questionChoice(arr, fn){
 	var x = (arr[(Math.round(Math.random()) * (questionArray.length -1))]);
 	fn(x);
 }
 
-function displayQuestion(el) {
-	console.log(el.question);
-	console.log(el.answer);
+function displayQuestion2(el) {
+	el.displayQuestion();
+	el.displayAnswers();
 }
 
-questionChoice(questionArray, displayQuestion);
+questionChoice(questionArray, displayQuestion2);
 
 
 
