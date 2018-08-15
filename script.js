@@ -356,19 +356,24 @@ var Question = function(question, answer, correctAnswer){
 
 var question1 = new Question('When was Ryan born?', [1988, 1965, 2000], 0);
 var question2 = new Question('Is he white?', ['yes', 'no'], 1);
-var question3 = new Question('favorite basketball team?', ['wizards', 'warriors']);
-questionArray.push(question1, question2);
+var question3 = new Question('favorite basketball team?', ['wizards', 'warriors'], 0);
+questionArray.push(question1, question2, question3);
 
 
 Question.prototype.displayQuestion = function() {
 	console.log(this.question);
+	for (i = 0; i < this.answer.length; i++) {
+		console.log(i + ': ' + this.answer[i]);
+	}
+	var userAnswer;
+	userAnswer	= prompt(this.question);
+	if (userAnswer == this.correctAnswer) {
+		console.log('that is correct');
+	} else {
+		console.log('that is wrong');
+	}
+
 };
-Question.prototype.displayAnswers = function() {
-	console.log(this.answer);
-};
-
-
-
 
 
 function questionChoice(arr, fn){
@@ -378,7 +383,6 @@ function questionChoice(arr, fn){
 
 function displayQuestion2(el) {
 	el.displayQuestion();
-	el.displayAnswers();
 }
 
 questionChoice(questionArray, displayQuestion2);
