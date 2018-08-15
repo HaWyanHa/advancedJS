@@ -355,19 +355,22 @@ var Question = function(question, answer, correctAnswer){
 
 
 var question1 = new Question('When was Ryan born?', [1988, 1965, 2000], 0);
-var question2 = new Question('Is he white', ['yes', 'no'], 1);
+var question2 = new Question('Is he white?', ['yes', 'no'], 1);
 var question3 = new Question('favorite basketball team?', ['wizards', 'warriors']);
 questionArray.push(question1, question2);
 
 
-var questionChoice = function(arr){
+function questionChoice(arr, fn){
 	var x = (arr[(Math.round(Math.random()) * (questionArray.length -1))]);
-};
+	fn(x);
+}
 
-console.log(questionChoice(questionArray));
+function displayQuestion(el) {
+	console.log(el.question);
+	console.log(el.answer);
+}
 
-
-
+questionChoice(questionArray, displayQuestion);
 
 
 
